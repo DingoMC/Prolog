@@ -14,3 +14,9 @@ fibbo2(N, L, X1, X2, W) :- L =< N, L1 is L + 1, X3 is X1+X2, fibbo2(N, L1, X2, X
 % -> -> fibbo2(3, 3, 2, 3, W) :- W is 3. <-
 % -> W is 3 <-
 % W is 3.
+
+gold(1, 1) :- !.
+gold(2, 1) :- !.
+gold(N, W) :- goldR(N, 1, 1, 1, W).
+goldR(N, N, X1, X2, W) :- W is X2/X1, !.
+goldR(N, L, X1, X2, W) :- L =< N, L1 is L + 1, X3 is X1+X2, goldR(N, L1, X2, X3, W).
